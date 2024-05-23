@@ -13,7 +13,10 @@ if (!fs.existsSync(configPath)) {
     console.warn('[WARN] config.json does not exist. Generating a new one...')
     const defaultConfig = {
         prefix: '/',
-        token: 'YOUR_DISCORD_BOT_TOKEN'
+        token: 'YOUR_DISCORD_BOT_TOKEN',
+        "clientId": "YOUR_DISCORD_BOT_CLIENT_ID",
+        "guildId": "YOUR_TEST_SERVER_ID",
+        "musicPath": "YOUR_MUSIC_PATH"
     }
     fs.writeFileSync(configPath, JSON.stringify(defaultConfig, null, 2))
     console.warn('config.json has been generated. Please fill in your bot token and restart the bot.')
@@ -28,6 +31,7 @@ const client = new Client({
     intents: [
         GatewayIntentBits.DirectMessages,
         GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildVoiceStates,
         GatewayIntentBits.GuildMessages,
         GatewayIntentBits.MessageContent,
         // ...
